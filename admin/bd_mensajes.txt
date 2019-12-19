@@ -1,0 +1,8 @@
+use tortas;
+create table mensajes(
+    id int(10) auto_increment not null,
+    contacto varchar(300) not null,
+    mensaje varchar(800) not null,
+    motivo varchar(500) not null,
+    primary key(id)
+);
