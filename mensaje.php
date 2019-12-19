@@ -2,19 +2,19 @@
 require('admin/conexion.php');
 // peticion de pregunta
 if (isset($_POST['pregunta'])) {
-  $contacto = htmlspecialchars($_POST['contacto']);
+  $contacto = $_POST['contacto'];
   $mensaje = $_POST['mensaje'];
   $motivo = "pregunta";
-  $contEscape = mysqli_real_escape_string($conexion, $contacto);
-  $mensEscape = mysqli_real_escape_string($conexion, $mensaje);
+  $contEscape = htmlspecialchars($contacto);
+  $mensEscape = htmlspecialchars($mensaje);
   $queryPreg = "INSERT INTO mensajes(contacto, mensaje, motivo) VALUES('$contEscape','$mensEscape','$motivo')";
   $ResultPreg = mysqli_query($conexion,$queryPreg);
   $notificacion = "Su Pregunta Se Envio Satisfactoriamente, Pronto le estaremos respondiendo.";
 }
 // peticion de pregunta de producto
 if (isset($_POST['producto'])) {
-  $datoContacto = $_POST['datoContacto'];
-  $comentario = $_POST['comentario'];
+  $datoContacto = htmlspecialchars($_POST['datoContacto']);
+  $comentario = htmlspecialchars($_POST['comentario']);
   $motivo = $_POST['motivo'];
   $queryProducto = "INSERT INTO mensajes(contacto,mensaje,motivo) VALUES('$datoContacto','$comentario','$motivo')";
   $resultProducto = mysqli_query($conexion,$queryProducto);
